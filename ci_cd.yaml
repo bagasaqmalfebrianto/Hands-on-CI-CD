@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-cd-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ci-cd
+  template:
+    metadata:
+      labels:
+        app: ci-cd
+    spec:
+      containers:
+      - name: gpt-descriotions-generator
+        image: bagasaqmalfebrianto/gpt-descriotions-generator:latest
+        ports:
+        - containerPort: 5001
